@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.liguang.ipcdemo">
+
+    <permission
+        android:name="com.liguang.ipcdemo.permission.ACCESS_BOOK_SERVICE"
+        android:protectionLevel="normal" />
+
+    <uses-permission android:name="com.liguang.ipcdemo.permission.ACCESS_BOOK_SERVICE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".Main2Activity"
+            android:process=":remote" />
+        <activity
+            android:name=".Main3Activity"
+            android:process="com.liguang.ipcdemo.remote" />
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":server" />
+        <service
+            android:name=".BackendService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":backend" />
+
+        <activity android:name=".Main4Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
